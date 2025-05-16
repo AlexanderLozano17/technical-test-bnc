@@ -17,9 +17,9 @@ public interface PriceJpaRepository extends JpaRepository<PriceEntity, Long> {
 
     @Query("SELECT p FROM PriceEntity p " +
             "WHERE p.productEntity = :product " +
-            "AND p.brandEntity = :brand " +
-            "AND p.startDate < :applicationDate " +
-            "AND p.endDate > :applicationDate " +
+            	"AND p.brandEntity = :brand " +
+            	"AND p.startDate < :applicationDate " +
+            	"AND p.endDate > :applicationDate " +
             "ORDER BY p.priority DESC " +
             "LIMIT 1 ")
     Optional<PriceEntity> findFirstPriceByDateAndProductAndBrand(

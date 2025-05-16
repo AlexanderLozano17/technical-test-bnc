@@ -1,0 +1,85 @@
+package com.ecommerce.infraestructure.adapters.repository;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.ecommerce.infrastructure.adapter.entities.BrandEntity;
+import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
+import com.ecommerce.infrastructure.adapter.entities.ProductEntity;
+import com.ecommerce.infrastructure.adapter.repository.PriceJpaRepository;
+
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+class PriceJpaRepositoryTest {
+	
+    @Autowired
+    private PriceJpaRepository priceJpaRepository;
+
+    @Test
+    void test1FindFirstPriceByDateAndProductAndBrand() {
+
+        LocalDateTime applicationDate = LocalDateTime.of(2020, 06, 14, 10, 00);
+        
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setId(35455L);
+        productEntity.setName("Product 1");
+       
+        
+        BrandEntity brandEntity = new BrandEntity();
+        brandEntity.setId(1L);
+        brandEntity.setName("Zara");
+        
+        PriceEntity priceEntity = new PriceEntity();
+        priceEntity.setPriceList(1L);
+        priceEntity.setProductEntity(productEntity);
+        priceEntity.setBrandEntity(brandEntity);
+        priceEntity.setStartDate(LocalDateTime.of(2020, 06, 14, 00, 00));
+        priceEntity.setEndDate(LocalDateTime.of(2020, 12, 31, 23, 59, 59));
+        priceEntity.setPriority(0);
+        priceEntity.setPrice(BigDecimal.valueOf(35.50).setScale(2));
+        priceEntity.setCurrency("EUR");
+
+        Optional<PriceEntity> result = priceJpaRepository.findFirstPriceByDateAndProductAndBrand(
+                applicationDate, productEntity, brandEntity);
+
+        assertEquals(Optional.of(priceEntity), result);
+    }
+
+    @Test
+    void test2FindFirstPriceByDateAndProductAndBrand() {
+
+        LocalDateTime applicationDate = LocalDateTime.of(2020, 06, 14, 16, 00);
+
+        ProductEntity productEntity = new ProductEntity();
+        productEntity.setId(35455L);
+        productEntity.setName("Product 1");        
+        
+        BrandEntity brandEntity = new BrandEntity();
+        brandEntity.setId(1L);
+        brandEntity.setName("Zara");
+        
+        PriceEntity priceEntity = new PriceEntity();
+        priceEntity.setPriceList(2L);
+        priceEntity.setProductEntity(productEntity);
+        priceEntity.setBrandEntity(brandEntity);
+        priceEntity.setStartDate(LocalDateTime.of(2020, 06, 14, 15, 00));
+        priceEntity.setEndDate(LocalDateTime.of(2020, 06, 14, 18, 30));
+        priceEntity.setPriority(1);
+        priceEntity.setPrice(BigDecimal.valueOf(25.45).setScale(2));
+        priceEntity.setCurrency("EUR");
+
+        Optional<PriceEntity> result = priceJpaRepository.findFirstPriceByDateAndProductAndBrand(applicationDate, productEntity, brandEntity);
+
+        assertEquals(Optional.of(priceEntity), result);
+    }
+
+}

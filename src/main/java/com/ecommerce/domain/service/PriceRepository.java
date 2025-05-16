@@ -9,7 +9,18 @@ import com.ecommerce.domain.model.Price;
 
 public interface PriceRepository {
 
+	/**
+	 * 
+	 * @param date
+	 * @param productId
+	 * @param brandId
+	 * @return
+	 */
     Optional<Price> getPriceByDate(LocalDateTime date, Long productId, Long brandId);
     
-    List<PriceDto> getAllPrice();
+    /**
+     * 
+     * @return
+     */
+    List<Price> getAllPrice();
 }

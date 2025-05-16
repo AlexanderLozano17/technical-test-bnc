@@ -1,13 +1,13 @@
 package com.ecommerce.utils;
 
 /**
- * La clase ApiMessages es una clase de constantes que define los mensajes
- * estándar de respuesta para una API. Está diseñada para centralizar los
+ * La clase MessagesResponse es una clase de constantes que define los mensajes
+ * estándar de respuesta para una API o un metodo. Está diseñada para centralizar los
  * mensajes utilizados en las respuestas HTTP
  */
-public final class ApiMessages {
+public final class MessagesResponse {
 	
-    private ApiMessages() {}
+    private MessagesResponse() {}
     
     /** ====================================================
 		    			API MESSAGE SUCCESS
@@ -18,8 +18,10 @@ public final class ApiMessages {
     /** ====================================================
                       API MESSAGE SUCCESS
     	==================================================== */
+    public static final String LIST_SUCCESS = "Listado obtenido correctamente";
     public static final String RECORD_FOUND = "Registro encontrado";
     public static final String RECORD_NOT_FOUND = "Registro no encontrado";
+    public static final String SAVE_SUCCESS = "Registro guardado correctamente";
     public static final String NO_CONTENT = "La solicitud se procesó correctamente, pero no hay contenido disponible.";
     
     /** ====================================================
@@ -31,3 +33,4 @@ public final class ApiMessages {
     public static final String INTERNAL_SERVER_ERROR = "Error interno del servidor. Intente nuevamente más tarde.";
 
 }
+

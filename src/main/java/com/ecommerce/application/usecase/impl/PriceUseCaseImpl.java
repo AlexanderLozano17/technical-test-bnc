@@ -1,10 +1,8 @@
 package com.ecommerce.application.usecase.impl;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -17,6 +15,7 @@ import com.ecommerce.application.usecase.PriceUseCase;
 import com.ecommerce.domain.model.Price;
 import com.ecommerce.domain.service.PriceRepository;
 import com.ecommerce.utils.LogHelper;
+import com.ecommerce.utils.MessagesResponse;
 
 import lombok.RequiredArgsConstructor;
 
@@ -37,30 +36,24 @@ public class PriceUseCaseImpl implements PriceUseCase {
     	
     	Optional<PriceDto> priceDto = priceRepository.getPriceByDate(date, productId, brandId)
                 .map(priceDtoMapper::priceToPriceDto);
-    	
-    	if (priceDto.isPresent()) {
-    		LOGGER.info(LogHelper.success(getClass(), "getPriceByDate", ""));
-    		LOGGER.info(LogHelper.end(getClass(), "getPriceByDate"));
-    		return priceDto;
-    	}
-    	
-    	LOGGER.warn(LogHelper.warn(getClass(), "getPriceByDate", ""));
+
+    	String message = priceDto.isPresent()  ? MessagesResponse.RECORD_FOUND : MessagesResponse.NO_CONTENT;
+    	LOGGER.info(LogHelper.success(getClass(), "getPriceByDate", message));
 		LOGGER.info(LogHelper.end(getClass(), "getPriceByDate"));
-		return Optional.empty();
+		return priceDto;
     }
 
 	@Override
 	public List<PriceDto> getAllPrice() {
 		LOGGER.info(LogHelper.start(getClass(), "getAllPrice"));
-		List<PriceDto> listPriceDto = priceRepository.getAllPrice().stream()
-                .map(price -> mapperPriceToPriceDto(price))
-                .collect(Collectors.toList());
 		
+		List<PriceDto> listPriceDto = priceRepository.getAllPrice().stream()
+                .map(priceDtoMapper::priceToPriceDto)
+                .collect(Collectors.toList());
+				
+		String message = listPriceDto.size() > 0  ? MessagesResponse.LIST_SUCCESS : MessagesResponse.NO_CONTENT;
+		LOGGER.info(LogHelper.success(getClass(), "getAllPrice", message));
+		LOGGER.info(LogHelper.end(getClass(), "getAllPrice"));		
 		return listPriceDto;
 	}
-	
-	private PriceDto mapperPriceToPriceDto(Price price) {		
-		return priceDtoMapper.priceToPriceDto(price);
-	}
-
 }
