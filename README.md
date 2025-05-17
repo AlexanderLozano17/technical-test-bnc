@@ -52,16 +52,17 @@ Este servicio adopta la arquitectura hexagonal (también conocida como puertos y
                     │   ├── 📁 mappers
                     │   └── 📁 usecases
                     │       └── 📁 impl
-                    └── 📁 infrastructure
-                        ├── 📁 rest
-                        │   ├── 📁 advice
-                        │   ├── 📁 controller
-                        │   ├── 📁 response
-                        │   └── 📁 config
-                        └── 📁 adapters
-                            ├── 📁 entities
-                            ├── 📁 mappers
-                            └── 📁 repository
+                    ├── 📁 infrastructure
+                    |   ├── 📁 rest
+                    |    │   ├── 📁 advice
+                    │   ├── 📁 controller
+                    |   │   ├── 📁 response
+                    |   │   └── 📁 config
+                    |   └── 📁 adapters
+                    |       ├── 📁 entities
+                    |       ├── 📁 mappers
+                    |       └── 📁 repository
+                    └── 📁utils                
 
 
 
