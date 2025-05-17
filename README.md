@@ -98,18 +98,32 @@ http://localhost:8080.
 
 ## Modelo relacional
 
-+----------------+     +----------------+       +----------------+
-|   PRODUCTS     |     |    BRANDS      |       |     PRICES     |
-+----------------+     +----------------+       +----------------+
-| PRODUCT_ID (PK)|     | BRAND_ID (PK)  |       | PRICE_LIST (PK)|
-| NAME           |     | NAME           |       | BRAND_ID (FK)  |
-+----------------+     +----------------+       | PRODUCT_ID (FK)|
-                                                | START_DATE      |
-                                                | END_DATE        |
-                                                | PRIORITY        |
-                                                | PRICE           |
-                                                | CURR            |
-                                                +----------------+
+🗃️ **Tabla: PRODUCTS**
+PRODUCT_ID (PK): Identificador único del producto.
+
+NAME: Nombre del producto.
+
+🗃️ **Tabla: BRANDS**
+BRAND_ID (PK): Identificador único de la marca.
+
+NAME: Nombre de la marca.
+
+🗃️ **Tabla: PRICES**
+PRICE_LIST (PK): Identificador único del precio.
+
+BRAND_ID (FK): Clave foránea que referencia a BRANDS(BRAND_ID).
+
+PRODUCT_ID (FK): Clave foránea que referencia a PRODUCTS(PRODUCT_ID).
+
+START_DATE: Fecha de inicio de la vigencia del precio.
+
+END_DATE: Fecha de fin de la vigencia del precio.
+
+PRIORITY: Prioridad del precio (útil para determinar cuál aplicar si hay múltiples precios en el mismo periodo).
+
+PRICE: Valor del precio.
+
+CURR: Moneda del precio.
 
 
 ## Endpoints
