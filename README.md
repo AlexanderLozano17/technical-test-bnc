@@ -1,4 +1,4 @@
-# 📦 Proyecto Spring Boot + Apache Kafka (Docker Ready)
+# 📦 Technical-test-bnc
 Este servicio de precios esta diseñado para gestionar de manera eficiente y escalable la información de precios en una plataforma de comercio electrónico. Su principal función es proporcionar los precios aplicables a productos específicos en función de la fecha de aplicación, el identificador del producto y el identificador de la marca.
 
 Este servicio adopta la arquitectura hexagonal (también conocida como puertos y adaptadores). Este patrón arquitectónico propone una separación clara entre la lógica de negocio y las dependencias externas, como bases de datos, interfaces de usuario o servicios externos. La lógica de negocio se encuentra en el núcleo de la aplicación, mientras que las interacciones con el mundo exterior se manejan a través de puertos (interfaces) y adaptadores que implementan estas interfaces . 
