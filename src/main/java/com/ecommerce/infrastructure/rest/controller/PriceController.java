@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecommerce.application.dto.PriceDto;
 import com.ecommerce.application.usecase.PriceUseCase;
 import com.ecommerce.infrastructure.rest.response.ResponseApi;
+import com.ecommerce.infrastructure.rest.response.ResponseError;
 import com.ecommerce.utils.LogHelper;
 import com.ecommerce.utils.MessagesResponse;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -48,11 +48,11 @@ public class PriceController {
 	)
 	@ApiResponses(value = {
 	    @ApiResponse(responseCode = "200", description = "Lista de precios encontrada",
-	        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class))),
+	        content = @Content(mediaType = "application/json", schema = @Schema(implementation = PriceDto.class))),
 	    @ApiResponse(responseCode = "404", description = "No se encontraron precios",
-	        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class))    	        ),
+	        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseError.class))    	        ),
 	    @ApiResponse(responseCode = "400", description = "Solicitud incorrecta",
-	        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class)))
+	        content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseError.class)))
 	})
     @GetMapping()
     public ResponseEntity<List<PriceDto>> getAllPrice() {    	
@@ -72,11 +72,11 @@ public class PriceController {
     )
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Precio encontrado", 
-        		content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class))),
+        		content = @Content(mediaType = "application/json", schema = @Schema(implementation = PriceDto.class))),
         @ApiResponse( responseCode = "404", description = "Precio no encontrado",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class))),
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseError.class))),
         @ApiResponse(responseCode = "400", description = "Solicitud inválida", 
-        	content = @Content( mediaType = "application/json", schema = @Schema(implementation = ResponseApi.class)))
+        	content = @Content( mediaType = "application/json", schema = @Schema(implementation = ResponseError.class)))
     })
     	
     @GetMapping("/{applicationDate}/{productId}/{brandId}")
