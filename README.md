@@ -83,52 +83,63 @@ Cada acción del sistema (inicio, éxito, error, fin) es registrada, facilitando
 git clone https://github.com/AlexanderLozano17/technical-test-bnc.git
 ```
 
-## 2. Construir el proyecto
+ **Paso 2. Construir el proyecto:**
+ 
 ```bash
 mvn clean install
 ```
 
-## Ejecutar la aplicación
+ **Paso 3. Ejecutar la aplicación**
+ 
 ```bash
 mvn spring-boot:run
 ```
-La aplicación estará disponible en
+ **Paso 4. La aplicación estará disponible en:**
+
 ```bash
 http://localhost:8080.
 ```
 
 ## Modelo relacional
 
-🗃️ **Tabla: PRODUCTS**
-PRODUCT_ID (PK): Identificador único del producto.
+<img src="relationModelDB.png" alt="Modelo Relacional" width="500"/>
 
-NAME: Nombre del producto.
+## Documentaciòn del Modelo relacional
+🗃️ **Tabla: PRODUCTS**
+
+| Campo        | Tipo     | Clave | Descripción                        |
+|--------------|----------|-------|------------------------------------|
+| `PRODUCT_ID` | INT      | PK    | Identificador único del producto   |
+| `NAME`       | VARCHAR  |       | Nombre del producto                |
+
+---
 
 🗃️ **Tabla: BRANDS**
-BRAND_ID (PK): Identificador único de la marca.
 
-NAME: Nombre de la marca.
+| Campo      | Tipo     | Clave | Descripción                       |
+|------------|----------|-------|-----------------------------------|
+| `BRAND_ID` | INT      | PK    | Identificador único de la marca   |
+| `NAME`     | VARCHAR  |       | Nombre de la marca                |
+
+---
 
 🗃️ **Tabla: PRICES**
-PRICE_LIST (PK): Identificador único del precio.
 
-BRAND_ID (FK): Clave foránea que referencia a BRANDS(BRAND_ID).
+| Campo         | Tipo      | Clave | Descripción                                                              |
+|---------------|-----------|-------|--------------------------------------------------------------------------|
+| `PRICE_LIST`  | INT       | PK    | Identificador único del precio                                          |
+| `BRAND_ID`    | INT       | FK    | Referencia a `BRANDS(BRAND_ID)`                                         |
+| `PRODUCT_ID`  | INT       | FK    | Referencia a `PRODUCTS(PRODUCT_ID)`                                     |
+| `START_DATE`  | DATETIME  |       | Fecha de inicio de la vigencia del precio                               |
+| `END_DATE`    | DATETIME  |       | Fecha de fin de la vigencia del precio                                  |
+| `PRIORITY`    | INT       |       | Prioridad del precio (para resolver conflictos de vigencia)             |
+| `PRICE`       | DECIMAL   |       | Valor del precio                                                         |
+| `CURR`        | VARCHAR   |       | Moneda del precio (por ejemplo: `USD`, `EUR`)                           |
 
-PRODUCT_ID (FK): Clave foránea que referencia a PRODUCTS(PRODUCT_ID).
-
-START_DATE: Fecha de inicio de la vigencia del precio.
-
-END_DATE: Fecha de fin de la vigencia del precio.
-
-PRIORITY: Prioridad del precio (útil para determinar cuál aplicar si hay múltiples precios en el mismo periodo).
-
-PRICE: Valor del precio.
-
-CURR: Moneda del precio.
 
 
 ## Endpoints
-#### Ejemplo de peticiónes
+**Ejemplo de peticiónes 1.**
 
 ```bash
 curl -X GET "http://localhost:8080/api/price"
@@ -171,7 +182,7 @@ curl -X GET "http://localhost:8080/api/price"
 ]
 ```
 
-#### Ejemplo de peticiónes
+**Ejemplo de peticiónes 2.**
 
 ```bash
 curl -X GET "http://localhost:8080/api/price/2020-06-14T16:00:00/35455/1"
@@ -188,18 +199,18 @@ curl -X GET "http://localhost:8080/api/price/2020-06-14T16:00:00/35455/1"
 }
 ```
 
-### **Ejecutar los Test:**  
+**Ejecutar los Test:**  
+
 ```bash
 mvn clean test
 ```
-La covertura se realizo utilizando JaCoCo y se puede visualizar en la siguiente ruta:
+**Para la covertura se utilizo la herramineta JaCoCo y se puede visualizar en la siguiente ruta:**:
 
 ```bash
 target/site/jacoco/index.html
 ```
 
-### **Documentación OpenAPI (Swagger):**  
-   Accede a Swagger UI para ver los endpoints disponibles:  
+**Documentación OpenAPI (Swagger):**  
    
 ```bash
 👉 http://localhost:8080/swagger-ui/index.html
