@@ -12,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.ecommerce.infrastructure.adapter.entities.BrandEntity;
-import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
-import com.ecommerce.infrastructure.adapter.entities.ProductEntity;
-import com.ecommerce.infrastructure.adapter.repository.PriceJpaRepository;
+import com.ecommerce.infrastructure.adapter.out.out.entities.BrandEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.PriceEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.ProductEntity;
+import com.ecommerce.infrastructure.adapter.out.repository.PriceJpaRepository;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

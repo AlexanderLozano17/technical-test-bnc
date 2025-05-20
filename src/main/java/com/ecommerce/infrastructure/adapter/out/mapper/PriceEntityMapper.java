@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.adapter.mapper;
+package com.ecommerce.infrastructure.adapter.out.mapper;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.InjectionStrategy;
@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.ecommerce.domain.model.Price;
-import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.PriceEntity;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {ProductEntityMapper.class,
         BrandEntityMapper.class}, injectionStrategy = InjectionStrategy.CONSTRUCTOR)

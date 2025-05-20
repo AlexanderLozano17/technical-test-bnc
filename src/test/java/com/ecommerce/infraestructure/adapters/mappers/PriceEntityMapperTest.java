@@ -13,8 +13,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.ecommerce.domain.model.Brand;
 import com.ecommerce.domain.model.Price;
 import com.ecommerce.domain.model.Product;
-import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
-import com.ecommerce.infrastructure.adapter.mapper.PriceEntityMapper;
+import com.ecommerce.infrastructure.adapter.out.mapper.PriceEntityMapper;
+import com.ecommerce.infrastructure.adapter.out.out.entities.PriceEntity;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

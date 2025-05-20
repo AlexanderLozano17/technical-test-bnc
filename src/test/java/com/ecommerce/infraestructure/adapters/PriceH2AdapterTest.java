@@ -14,10 +14,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ecommerce.domain.model.Price;
-import com.ecommerce.infrastructure.adapter.PriceH2Adapter;
-import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
-import com.ecommerce.infrastructure.adapter.mapper.PriceEntityMapper;
-import com.ecommerce.infrastructure.adapter.repository.PriceJpaRepository;
+import com.ecommerce.infrastructure.adapter.out.PriceH2Adapter;
+import com.ecommerce.infrastructure.adapter.out.mapper.PriceEntityMapper;
+import com.ecommerce.infrastructure.adapter.out.out.entities.PriceEntity;
+import com.ecommerce.infrastructure.adapter.out.repository.PriceJpaRepository;
 
 @ExtendWith(MockitoExtension.class)
 class PriceH2AdapterTest {

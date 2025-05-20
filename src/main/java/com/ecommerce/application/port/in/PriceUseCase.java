@@ -1,4 +1,4 @@
-package com.ecommerce.application.usecase;
+package com.ecommerce.application.port.in;
 
 import java.time.LocalDateTime;
 import java.util.List;

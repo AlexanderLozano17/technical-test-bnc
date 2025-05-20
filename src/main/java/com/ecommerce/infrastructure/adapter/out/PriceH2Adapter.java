@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.adapter;
+package com.ecommerce.infrastructure.adapter.out;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 
 import com.ecommerce.domain.model.Price;
 import com.ecommerce.domain.service.PriceRepository;
-import com.ecommerce.infrastructure.adapter.entities.BrandEntity;
-import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
-import com.ecommerce.infrastructure.adapter.entities.ProductEntity;
-import com.ecommerce.infrastructure.adapter.mapper.PriceEntityMapper;
-import com.ecommerce.infrastructure.adapter.repository.PriceJpaRepository;
+import com.ecommerce.infrastructure.adapter.out.mapper.PriceEntityMapper;
+import com.ecommerce.infrastructure.adapter.out.out.entities.BrandEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.PriceEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.ProductEntity;
+import com.ecommerce.infrastructure.adapter.out.repository.PriceJpaRepository;
 import com.ecommerce.utils.LogHelper;
 
 import lombok.RequiredArgsConstructor;

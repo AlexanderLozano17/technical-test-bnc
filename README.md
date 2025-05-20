@@ -35,34 +35,35 @@ Este servicio adopta la arquitectura hexagonal (también conocida como puertos y
 ## **📌 Estructura del Proyecto **
 
 ```
-📦 ecommerce
-├── 📄 pom.xml
-├── 📄 README.md
-└── 📁 src
-    └── 📁 main
-        └── 📁 java
-            └── 📁 com
-                └── 📁 ecommerce
-                    ├── 📄 EcommerceApplication.java
-                    ├── 📁 domain
-                    │   ├── 📁 models
-                    │   └── 📁 service
-                    ├── 📁 application
-                    │   ├── 📁 dtos
-                    │   ├── 📁 mappers
-                    │   └── 📁 usecases
-                    │       └── 📁 impl
-                    ├── 📁 infrastructure
-                    |   ├── 📁 rest
-                    |    │   ├── 📁 advice
-                    │   ├── 📁 controller
-                    |   │   ├── 📁 response
-                    |   │   └── 📁 config
-                    |   └── 📁 adapters
-                    |       ├── 📁 entities
-                    |       ├── 📁 mappers
-                    |       └── 📁 repository
-                    └── 📁utils                
+📦 com.ecommerce
+├── 📁 domain
+│   ├── 📁 model              ← Entidades y Value Objects
+│   └── 📁 service            ← Servicios de dominio
+│
+├── 📁 application
+│   ├── 📁 dto                ← DTOs usados en los casos de uso
+│   ├── 📁 mapper             ← Mappers entre DTO y modelo
+│   ├── 📁 port
+│   │   └── 📁 in             ← Interfaces de casos de uso
+│   └── 📁 service            ← Implementaciones de los casos de uso
+│
+├── 📁 adapter
+│   ├── 📁 in
+│   │   └── 📁 rest
+│   │       ├── 📁 controller ← Controladores REST
+│   │       ├── 📁 dto        ← Request y response para REST
+│   │       ├── 📁 advice     ← Manejo de errores/excepciones
+│   │       └── 📁 config     ← Configuración REST
+│   │
+│   └── 📁 out
+│       └── 📁 persistence
+│           ├── 📁 entity     ← Entidades JPA (si aplican)
+│           ├── 📁 mapper     ← Mappers JPA ↔ Dominio
+│           └── 📁 repository ← Repositorios técnicos
+│
+└── 📁 config                 ← Configuración general (Beans, Security, Swagger, etc.)
+└── 📁 utils
+             
 
 
 

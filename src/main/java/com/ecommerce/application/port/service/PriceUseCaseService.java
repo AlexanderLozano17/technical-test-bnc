@@ -1,4 +1,4 @@
-package com.ecommerce.application.usecase.impl;
+package com.ecommerce.application.port.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,9 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.application.dto.PriceDto;
-import com.ecommerce.application.mappers.PriceDtoMapper;
-import com.ecommerce.application.usecase.PriceUseCase;
-import com.ecommerce.domain.model.Price;
+import com.ecommerce.application.mapper.PriceDtoMapper;
+import com.ecommerce.application.port.in.PriceUseCase;
 import com.ecommerce.domain.service.PriceRepository;
 import com.ecommerce.utils.LogHelper;
 import com.ecommerce.utils.MessagesResponse;
@@ -21,9 +20,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class PriceUseCaseImpl implements PriceUseCase {
+public class PriceUseCaseService implements PriceUseCase {
 	
-	private final Logger LOGGER = LoggerFactory.getLogger(PriceUseCaseImpl.class);
+	private final Logger LOGGER = LoggerFactory.getLogger(PriceUseCaseService.class);
 
     public static final String NOT_FOUND_ERROR_MESSAGE = "There is no record";
 

@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.rest.advice;
+package com.ecommerce.infrastructure.rest.in.advice;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import com.ecommerce.infrastructure.rest.response.ResponseError;
+import com.ecommerce.infrastructure.rest.in.response.ResponseError;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;

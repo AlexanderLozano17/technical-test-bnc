@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.rest.controller;
+package com.ecommerce.infrastructure.rest.in.controller;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommerce.application.dto.PriceDto;
-import com.ecommerce.application.usecase.PriceUseCase;
-import com.ecommerce.infrastructure.rest.response.ResponseApi;
-import com.ecommerce.infrastructure.rest.response.ResponseError;
+import com.ecommerce.application.port.in.PriceUseCase;
+import com.ecommerce.infrastructure.rest.in.response.ResponseApi;
+import com.ecommerce.infrastructure.rest.in.response.ResponseError;
 import com.ecommerce.utils.LogHelper;
 import com.ecommerce.utils.MessagesResponse;
 

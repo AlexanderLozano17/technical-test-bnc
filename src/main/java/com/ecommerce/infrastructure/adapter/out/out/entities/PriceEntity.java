@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.adapter.entities;
+package com.ecommerce.infrastructure.adapter.out.out.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

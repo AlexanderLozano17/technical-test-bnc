@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.adapter.entities;
+package com.ecommerce.infrastructure.adapter.out.out.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "BRANDS")
-public class BrandEntity {
+@Table(name = "PRODUCTS")
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BRAND_ID")
+    @Column(name = "PRODUCT_ID")
     private Long id;
 
     private String name;

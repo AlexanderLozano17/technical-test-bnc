@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ecommerce.application.dto.PriceDto;
+import com.ecommerce.application.mapper.PriceDtoMapper;
 import com.ecommerce.domain.model.Price;
 
 @ExtendWith(MockitoExtension.class)

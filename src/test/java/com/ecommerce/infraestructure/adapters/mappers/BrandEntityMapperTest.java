@@ -9,8 +9,8 @@ import org.mapstruct.factory.Mappers;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.ecommerce.domain.model.Brand;
-import com.ecommerce.infrastructure.adapter.entities.BrandEntity;
-import com.ecommerce.infrastructure.adapter.mapper.BrandEntityMapper;
+import com.ecommerce.infrastructure.adapter.out.mapper.BrandEntityMapper;
+import com.ecommerce.infrastructure.adapter.out.out.entities.BrandEntity;
 
 @ExtendWith(MockitoExtension.class)
 class BrandEntityMapperTest {

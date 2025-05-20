@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.rest.response;
+package com.ecommerce.infrastructure.rest.in.response;
 
 import java.io.Serializable;
 

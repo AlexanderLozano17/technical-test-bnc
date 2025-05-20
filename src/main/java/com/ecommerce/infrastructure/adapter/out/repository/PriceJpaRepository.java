@@ -1,4 +1,4 @@
-package com.ecommerce.infrastructure.adapter.repository;
+package com.ecommerce.infrastructure.adapter.out.repository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.ecommerce.infrastructure.adapter.entities.BrandEntity;
-import com.ecommerce.infrastructure.adapter.entities.PriceEntity;
-import com.ecommerce.infrastructure.adapter.entities.ProductEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.BrandEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.PriceEntity;
+import com.ecommerce.infrastructure.adapter.out.out.entities.ProductEntity;
 
 @Repository
 public interface PriceJpaRepository extends JpaRepository<PriceEntity, Long> {
