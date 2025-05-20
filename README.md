@@ -53,7 +53,6 @@ Este servicio adopta la arquitectura hexagonal (también conocida como puertos y
 │   │       ├── 📁 controller ← Controladores REST
 │   │       ├── 📁 dto        ← Request y response para REST
 │   │       ├── 📁 advice     ← Manejo de errores/excepciones
-│   │       └── 📁 config     ← Configuración REST
 │   │
 │   └── 📁 out
 │       └── 📁 persistence
