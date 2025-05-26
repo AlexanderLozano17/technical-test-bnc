@@ -17,10 +17,4 @@ public interface PriceRepository {
 	 * @return
 	 */
     Optional<Price> getPriceByDate(LocalDateTime date, Long productId, Long brandId);
-    
-    /**
-     * 
-     * @return
-     */
-    List<Price> getAllPrice();
 }

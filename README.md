@@ -97,7 +97,7 @@ mvn spring-boot:run
  **Paso 4. La aplicación estará disponible en:**
 
 ```bash
-http://localhost:8080.
+http://localhost:8080
 ```
 
 ## Modelo relacional
@@ -142,60 +142,22 @@ http://localhost:8080.
 **Ejemplo de peticiónes 1.**
 
 ```bash
-curl -X GET "http://localhost:8080/api/price"
-```
-
-```json
-[
-    {
-        "priceList": 1,
-        "productId": 35455,
-        "brandId": 1,
-        "startDate": "2020-06-14T00:00:00",
-        "endDate": "2020-12-31T23:59:59",
-        "price": 35.50
-    },
-    {
-        "priceList": 2,
-        "productId": 35455,
-        "brandId": 1,
-        "startDate": "2020-06-14T15:00:00",
-        "endDate": "2020-06-14T18:30:00",
-        "price": 25.45
-    },
-    {
-        "priceList": 3,
-        "productId": 35455,
-        "brandId": 1,
-        "startDate": "2020-06-15T00:00:00",
-        "endDate": "2020-06-15T11:00:00",
-        "price": 30.50
-    },
-    {
-        "priceList": 4,
-        "productId": 35455,
-        "brandId": 1,
-        "startDate": "2020-06-15T16:00:00",
-        "endDate": "2020-12-31T23:59:59",
-        "price": 38.95
-    }
-]
-```
-
-**Ejemplo de peticiónes 2.**
-
-```bash
-curl -X GET "http://localhost:8080/api/price/2020-06-14T16:00:00/35455/1"
+curl -X GET "http://localhost:8080/api/v1/prices?applicationDate=2020-06-14T16:00:00&productId=35455&brandId=1"
 ```
 
 ```json
 {
-  "priceList": 2,
-  "productId": 35455,
-  "brandId": 1,
-  "startDate": "2020-06-14T15:00:00",
-  "endDate": "2020-06-14T18:30:00",
-  "price": 25.45
+    "priceList": 2,
+    "productId": 35455,
+    "brandId": 1,
+    "startDate": "2020-06-14T15:00:00",
+    "endDate": "2020-06-14T18:30:00",
+    "price": 25.45,
+    "_links": {
+        "self": {
+            "href": "/api/v1/prices?applicationDate=2020-06-14T16:00&productId=35455&brandId=1"
+        }
+    }
 }
 ```
 

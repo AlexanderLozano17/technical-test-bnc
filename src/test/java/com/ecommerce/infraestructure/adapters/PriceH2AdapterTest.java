@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.ecommerce.domain.model.Price;
 import com.ecommerce.infrastructure.adapter.out.PriceH2Adapter;
@@ -21,6 +24,8 @@ import com.ecommerce.infrastructure.adapter.out.repository.PriceJpaRepository;
 
 @ExtendWith(MockitoExtension.class)
 class PriceH2AdapterTest {
+	
+	private static final Pageable FIRST_RESULT_ONLY = PageRequest.of(0, 1);
 
     @Mock
     private PriceJpaRepository priceJpaRepository;
@@ -44,8 +49,8 @@ class PriceH2AdapterTest {
         Price price = new Price();
         price.setPriceList(10L);
 
-        when(priceJpaRepository.findFirstPriceByDateAndProductAndBrand(any(), any(), any()))
-                .thenReturn(Optional.of(priceEntity));
+        when(priceJpaRepository.findTopByProductAndBrandAndApplicationDate(any(), any(), any(), any(Pageable.class)))
+        	.thenReturn(List.of(priceEntity));
         
         when(priceDboMapper.priceEntitytoPrice(priceEntity)).thenReturn(price);
 

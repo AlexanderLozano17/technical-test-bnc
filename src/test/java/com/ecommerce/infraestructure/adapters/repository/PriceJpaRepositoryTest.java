@@ -1,6 +1,7 @@
 package com.ecommerce.infraestructure.adapters.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.ecommerce.infrastructure.adapter.out.out.entities.BrandEntity;
@@ -20,6 +23,8 @@ import com.ecommerce.infrastructure.adapter.out.repository.PriceJpaRepository;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 class PriceJpaRepositoryTest {
+	
+	private static final Pageable FIRST_RESULT_ONLY = PageRequest.of(0, 1);
 	
     @Autowired
     private PriceJpaRepository priceJpaRepository;
@@ -47,9 +52,9 @@ class PriceJpaRepositoryTest {
         priceEntity.setPriority(0);
         priceEntity.setPrice(BigDecimal.valueOf(35.50).setScale(2));
         priceEntity.setCurrency("EUR");
-
-        Optional<PriceEntity> result = priceJpaRepository.findFirstPriceByDateAndProductAndBrand(
-                applicationDate, productEntity, brandEntity);
+ 
+        Optional<PriceEntity> result = priceJpaRepository.findTopByProductAndBrandAndApplicationDate(
+                applicationDate, productEntity, brandEntity, FIRST_RESULT_ONLY).stream().findFirst();
 
         assertEquals(Optional.of(priceEntity), result);
     }
@@ -77,7 +82,9 @@ class PriceJpaRepositoryTest {
         priceEntity.setPrice(BigDecimal.valueOf(25.45).setScale(2));
         priceEntity.setCurrency("EUR");
 
-        Optional<PriceEntity> result = priceJpaRepository.findFirstPriceByDateAndProductAndBrand(applicationDate, productEntity, brandEntity);
+        Optional<PriceEntity> result = priceJpaRepository.findTopByProductAndBrandAndApplicationDate(
+        		applicationDate, productEntity, brandEntity, FIRST_RESULT_ONLY)
+        		.stream().findFirst();
 
         assertEquals(Optional.of(priceEntity), result);
     }

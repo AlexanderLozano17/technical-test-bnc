@@ -10,8 +10,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "PRICES", indexes = {
         @Index(name = "IDX_BRAND_PRODUCT_PRICE", columnList = "BRAND_ID, PRODUCT_ID, PRICE_LIST, START_DATE, END_DATE")})

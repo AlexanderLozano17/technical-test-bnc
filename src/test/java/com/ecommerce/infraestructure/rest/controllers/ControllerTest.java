@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.ecommerce.config.ApiVersionPaths;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
@@ -41,7 +43,10 @@ class ControllerTest {
     		String startDate, 
     		String endDate) throws Exception {
     	
-        mockMvc.perform(get("/api/price/{applicationDate}/{productId}/{brandId}", applicationDate, productId, brandId))
+        mockMvc.perform(get(ApiVersionPaths.V1_PRICES)
+        		 	.param("applicationDate", applicationDate)
+        		 	.param("productId", String.valueOf(productId))
+        		 	.param("brandId", String.valueOf(brandId)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.price").value(expectedPrice))
                 .andExpect(jsonPath("$.startDate").value(startDate))
@@ -54,7 +59,10 @@ class ControllerTest {
         int productId = 35455;
         int brandId = 2;
 
-        mockMvc.perform(get("/api/price/{applicationDate}/{productId}/{brandId}", date.toString(), productId, brandId))
+        mockMvc.perform(get(ApiVersionPaths.V1_PRICES)
+	    		 	.param("applicationDate", date.toString())
+	    		 	.param("productId", String.valueOf(productId))
+	    		 	.param("brandId", String.valueOf(brandId)))
                 .andExpect(status().isNotFound());
     }
 

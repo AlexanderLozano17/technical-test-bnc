@@ -16,10 +16,4 @@ public interface PriceUseCase {
 	 * @return
 	 */
     Optional<PriceDto> getPriceByDate(LocalDateTime date, Long productId, Long brandId);
-
-    /**
-     * 
-     * @return
-     */
-	List<PriceDto> getAllPrice();
 }
